@@ -13,3 +13,4 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
 
     prepopulated_fields ={'slug':('title',)}
+    
