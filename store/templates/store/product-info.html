@@ -118,6 +118,10 @@
             },
             success: function (json){
                 console .log(json);
+
+                // updating the cart quantity in the navbar
+                // getting the element by id and changing its text content to the new quantity
+                document.getElementById('cart-qty').textContent= json.qty 
             },
             error: function (xhr, errmsg, err){
                 
