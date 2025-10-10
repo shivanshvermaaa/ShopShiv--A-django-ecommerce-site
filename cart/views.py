@@ -29,4 +29,15 @@ def cart_update(request):
 
 
 def cart_delete(request):
+    cart = Cart(request)
+    if request.POST.get('action')=='post':
+        product_id= int(request.POST.get('product_id'))
+        cart.delete(product=product_id)
+
+        #to ensure that the cart quantity is taken from session after deletion
+        cart_quantity= cart.__len__()
+        cart_total= cart.get_total()
+        response = JsonResponse({'qty': cart_quantity, 'total': cart_total})
+        return response
+
     pass

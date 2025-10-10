@@ -3,7 +3,7 @@
 
 {% load static %}
 
-
+{% load mathfilters %}
 {% block content %}
 
 
@@ -48,7 +48,7 @@
               
                 <div class="col-6"> Product </div>
               
-                <div class="col-6 text-end"><span class="h6 fw-bold">$ {{product.price}}</span></div>
+                <div class="col-6 text-end"><span class="h6 fw-bold">$ {{product.price|mul:item.qty}}</span></div>
             
               </div>
             
@@ -92,7 +92,7 @@
                   
                   &nbsp;
 
-                  <button type="button" id="delete-button"
+                  <button type="button" id="delete-button" data-index="{{product.id}}"
                     class="btn btn-danger btn-sm delete-button">
                     Delete
         
@@ -118,15 +118,55 @@
 
       <div class="col-12 text-end">
  
-        <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex"> <!-- cart.get_total --> </div></div>
+        <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex"> {{cart.get_total}} </div></div>
  
       </div>
  
 
     </div>
-  
+    <br>
+    <br>
 
  </main>
+ <script>
+
+  // delete button ajax
+    $(document).on('click', '.delete-button', function(e){
+
+        // to stop the default action of the button i.e submitting the form
+        e.preventDefault(); 
+        
+        // way to talk to the backend using ajax
+        // here we are sending a post request to the backend
+        $.ajax({
+           type: 'POST',
+            url: '{% url "cart-delete" %}',
+            data:{
+                product_id: $(this).data('index'),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                // take care of the lowercase 'post' here
+                action: 'post', 
+            },
+            success: function (json){
+                console .log(json);
+                location.reload(); // to reload the page after deletion
+                // updating the cart quantity in the navbar
+                // getting the element by id and changing its text content to the new quantity
+                document.getElementById('cart-qty').textContent= json.qty 
+                document.getElementById('total').textContent= json.total
+            },
+            error: function (xhr, errmsg, err){
+                
+            },
+
+
+        });
+    });
+
+
+
+
+ </script>
 
 
 
