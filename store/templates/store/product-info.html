@@ -98,7 +98,7 @@
 </div>
 
 <script>
-    
+
     // $ means jQuery to find something in the django document
     $(document).on('click', '#add-button', function(e){
 
@@ -119,7 +119,7 @@
             },
             success: function (json){
                 console .log(json);
-
+                location.reload();
                 // updating the cart quantity in the navbar
                 // getting the element by id and changing its text content to the new quantity
                 document.getElementById('cart-qty').textContent= json.qty 
