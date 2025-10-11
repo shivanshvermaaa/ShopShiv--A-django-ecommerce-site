@@ -1,6 +1,11 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
+
+from django.forms.widgets import PasswordInput, TextInput, EmailInput
+
+
+# registartion form
 class CreateUserForm(UserCreationForm):
     class Meta:
         model=User
@@ -25,4 +30,19 @@ class CreateUserForm(UserCreationForm):
         return email
 
             
-            
+
+# login form
+
+class loginForm(AuthenticationForm):
+    username=forms.CharField(widget=TextInput(attrs={'class':'form-control','placeholder':'username','id':'login-username'}))
+    password=forms.CharField(widget=PasswordInput(attrs={'class':'form-control','placeholder':'password','id':'login-password'}))
+
+
+#update form
+class updateUserForm(forms.ModelForm):
+    password = None
+   
+    class Meta:
+        model=User
+        fields=['username','email']
+        exclude=['password1','password2']  # excluding password fields

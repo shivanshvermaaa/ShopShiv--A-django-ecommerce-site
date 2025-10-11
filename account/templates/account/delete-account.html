@@ -19,18 +19,13 @@
 
             <div class="bg-white shadow-md p-5 rounded form-layout">
 
-                <h3 class="mb-3">Login to Your Account</h3>
+                <h3 class="mb-3">delete Your account</h3>
                 <h5 class="text-muted mb-4">Purchase your favourite items today!</h5>
 
                 <form method="POST" autocomplete="off">
                     {% csrf_token %}
-                    <br> <br>
-                    {{form.username|as_crispy_field}}
-                    <br> <br>
-                    
-                    {{form.password|as_crispy_field}}
-                    <br> <br>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
+                    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+                    <button type="submit" class="btn btn-danger w-100 mt-3">delete your account</button>
                 </form>
 
             </div>
