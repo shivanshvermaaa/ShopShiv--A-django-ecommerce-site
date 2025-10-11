@@ -1,0 +1,9 @@
+.form-layout{
+    border-radius: 0.5rem;
+    width: 500px;
+}
+.heading-josefin {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px; /* optional, adds elegance */
+}
