@@ -13,8 +13,10 @@ class CreateUserForm(UserCreationForm):
 
         # email validation
     def clean_email(self):
+
+        # retrieve email data from the form
         email=self.cleaned_data.get('email')
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email=email).exists(): #if same email exists in the database
                 raise forms.ValidationError("this email is invalid")
             
         if len(email)>= 350:
