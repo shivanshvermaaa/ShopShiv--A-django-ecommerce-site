@@ -11,10 +11,10 @@
         }
     </style>
    
-<a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> Logout </a>
     <body>
+        <br> <br>
         <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">Welcome, {{user}} to Your Dashboard</h5>
+            <h5 class="mb-3">Welcome,  {{user}} to Your Dashboard</h5>
             <hr>
             <p>This is the dashboard you can do the following.</p>
             <li> track your orders</li>
@@ -26,16 +26,18 @@
         <div class="container bg-white shadow-md p-5 form-layout">
             <h5 class="mb-3">Track Your Orders</h5>
             <hr>
-            <p>Click the button below to view your orders.</p>
+            <p>track all of your orders here</p>
             <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> My Orders </a>
         
         </div>
         <br> <br>
         <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">manage your account</h5>
+            <h5 class="mb-3">Manage Your Account</h5>
             <hr>
+
+            <p>update your profile and delete your account</p>
             <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'profile-management' %}"> Profile management </a>
-            <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> logout </a>
+            
         </div>
 
     </body>
