@@ -14,17 +14,25 @@
     <body>
         <br> <br>
         <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">Welcome,  {{user}} to Your Dashboard</h5>
+           <h5 class="mb-3">
+                <i class="fa fa-tachometer text-info me-2"></i>
+                    Welcome, {{ user }} to Your Dashboard
+            </h5>
+
             <hr>
             <p>This is the dashboard you can do the following.</p>
             <li> track your orders</li>
             <li>manage your account</li>
+            <li>manage your shipping address</li>
+            <li>and much more</li>
             
 
         </div>
         <br> <br>
         <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">Track Your Orders</h5>
+            <h5 class="mb-3">
+                <i class="fa fa-shopping-bag text-success me-2"></i> Track Your Orders
+            </h5>
             <hr>
             <p>track all of your orders here</p>
             <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> My Orders </a>
@@ -32,11 +40,26 @@
         </div>
         <br> <br>
         <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">Manage Your Account</h5>
+            <h5 class="mb-3">
+                <i class="fa fa-user text-primary me-2"></i> Manage Your Account
+            </h5>
             <hr>
 
             <p>update your profile and delete your account</p>
             <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'profile-management' %}"> Profile management </a>
+            
+        </div>
+        <br> <br>
+        <div class="container bg-white shadow-md p-5 form-layout">
+            <h5 class="mb-3">
+                <i class="fa fa-truck text-primary me-2"></i> Manage Shipping
+            </h5>
+
+
+            <hr>
+
+            <p>update your shipping details</p>
+            <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'manage-shipping' %}"> manage shipping </a>
             
         </div>
 
