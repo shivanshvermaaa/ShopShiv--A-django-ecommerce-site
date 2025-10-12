@@ -10,6 +10,7 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def register(request):
     form=CreateUserForm()
