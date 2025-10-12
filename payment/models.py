@@ -18,7 +18,7 @@ class ShippingAddress(models.Model):
     country=models.CharField(max_length=100)
     
     def __str__(self):
-        return 'shipping address -'+self.id
+        return 'shipping address -'+ str(self.id)
 
     class Meta:
         verbose_name_plural='Shipping Addresses'
