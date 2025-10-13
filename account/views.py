@@ -122,6 +122,8 @@ def delete_account(request):
 
 # shipping address management
 # model aur form dono import karne hai
+
+
 @login_required(login_url='my-login')
 def manage_shipping(request):
 

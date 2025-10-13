@@ -10,6 +10,7 @@ def store(request):
 
 def categories(request):
     all_categories= Category.objects.all()
+    # context processor
     return {'all_categories':all_categories}
 
 def product_info(request, product_slug):
