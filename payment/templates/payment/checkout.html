@@ -132,6 +132,16 @@
     </body>
 
     <script>
+        // total price
+
+        var total_price= '{{cart.get_total}}'
+
+
+
+
+
+
+
         // paypal integration
 
         const paypalButtonsComponent = paypal.Buttons({
@@ -148,11 +158,20 @@
 
             actions.disable();
 
+
+            // complete order- no shipping
             document.querySelectorAll('.validate').forEach(item =>{
                 item.addEventListener('keyup', event =>{
+
+
                     var order_verified = 'Yes';
+
                     function checkInputs(){
+
+
                         $('input[required]').each(function(){
+
+
                             if ($(this).val()==''){
 
                                 // the req fields are empty
@@ -175,6 +194,34 @@
                 });
             });
 
+            // complete order - with shipping
+            var order_verified = 'Yes';
+
+                    function checkInputs(){
+
+
+                        $('input[required]').each(function(){
+
+                            
+                            if ($(this).val()==''){
+
+                                // the req fields are empty
+                                return order_verified='No';
+                            }
+                        });
+
+                        return order_verified;
+                    }
+
+                    var isOrderVerified = checkInputs()
+
+                    if (isOrderVerified=== 'Yes'){
+                        actions.enable();
+                    }
+                    else{
+                        actions.disable();
+                    }
+
         },
 
         // set up the transaction
@@ -185,7 +232,7 @@
                 purchase_units: [
                     {
                         amount: {
-                            value: "88.44"
+                            value: total_price
                         }
                     }
                 ]
@@ -199,6 +246,34 @@
             const captureOrderHandler = (details) => {
                 const payerName = details.payer.name.given_name;
                 console.log('Transaction completed');
+
+
+                 $.ajax({
+                    type: 'POST',
+                    url: '{% url "complete-order" %}',
+                    data:{
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    address1: $('#address1').val(),
+                    address2: $('#address2').val(),
+                    city: $('#city').val(),
+                    state: $('#state').val(),
+                    zipcode: $('#zipcode').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    // take care of the lowercase 'post' here
+                    action: 'post', 
+            },
+            success: function (json){
+               
+                window.location.replace("{% url 'payment-success' %}")
+            },
+            error: function (xhr, errmsg, err){
+                window.location.replace("{% url 'payment-failed'%}")
+            },
+
+
+        });
+
 
 
             };
