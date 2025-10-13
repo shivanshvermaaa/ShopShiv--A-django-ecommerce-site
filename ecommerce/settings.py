@@ -150,3 +150,7 @@ EMAIL_HOST_PASSWORD = 'wwch bepc zugd qlic'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# patpal pop ups
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY ='same-origin-allow-popups'
