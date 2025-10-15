@@ -1,4 +1,4 @@
-<h1 align="center">🛍️ Django E-Commerce Website</h1>
+<h1 align="center">🛍️ ShopShiv- A Django E-Commerce Website</h1>
 
 <p align="center">
 A <b>full-featured E-Commerce web application</b> built with <b>Django</b>, offering a seamless online shopping experience.  
@@ -122,3 +122,70 @@ django-ecommerce/
 ├── requirements.txt
 └── manage.py
 ```
+
+<hr>
+
+## 🧰 Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/django-ecommerce.git
+cd django-ecommerce
+
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+# For Windows (PowerShell)
+.\venv\Scripts\activate
+
+# For macOS/Linux
+source venv/bin/activate
+
+# Install required dependencies
+pip install -r requirements.txt
+
+# Apply database migrations
+python manage.py makemigrations
+python manage.py migrate
+
+# Create an admin superuser (optional but recommended)
+python manage.py createsuperuser
+
+# Run the development server
+python manage.py runserver
+
+# Visit the site in your browser
+# http://127.0.0.1:8000/
+```
+<hr>
+
+## 💡 Future Enhancements
+
+- 🔐 Add **JWT-based authentication** for APIs.  
+- 📱 Integrate **Django REST Framework** for mobile/app API support.  
+- ⭐ Implement **Product Reviews & Ratings**.  
+- 💖 Add **Wishlist & Recently Viewed Items**.  
+- ⚡ Enhance frontend using **React or Vue** for a SPA-like experience.
+
+<hr>
+<hr>
+
+## 🤝 Contributing
+
+Contributions are always welcome! 🎉  
+If you'd like to improve this project — fix bugs, add new features, or enhance UI — feel free to:
+
+1. Fork the repository  
+2. Create a new feature branch (`git checkout -b feature-name`)  
+3. Commit your changes (`git commit -m 'Add some feature'`)  
+4. Push to your branch (`git push origin feature-name`)  
+5. Open a Pull Request 🚀  
+
+<hr>
+
+## 📄 License
+
+This project is licensed under the **MIT License** — you’re free to use, modify, and distribute it, provided proper credit is given.  
+See the [LICENSE](LICENSE) file for more details.
+
