@@ -129,7 +129,7 @@ django-ecommerce/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/django-ecommerce.git
+git clone https://github.com/shivanshvermaaa/django-ecommerce
 cd django-ecommerce
 
 # Create a virtual environment
