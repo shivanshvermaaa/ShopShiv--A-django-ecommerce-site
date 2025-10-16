@@ -160,32 +160,118 @@ python manage.py runserver
 ```
 <hr>
 
-## 💡 Future Enhancements
+## 📸 Screenshots  
+Here are some screenshots that showcase the app's UI and key features.
 
-- 🔐 Add **JWT-based authentication** for APIs.  
-- 📱 Integrate **Django REST Framework** for mobile/app API support.  
-- ⭐ Implement **Product Reviews & Ratings**.  
-- 💖 Add **Wishlist & Recently Viewed Items**.  
-- ⚡ Enhance frontend using **React or Vue** for a SPA-like experience.
+---
+
+### 🏠 Front Page
+<img src="https://github.com/user-attachments/assets/0c439c8d-6df0-460a-9e20-e9613761237c" alt="Front Page" width="600" height="800">
+
+---
+
+### 🛍️ Product Info Page
+<img src="https://github.com/user-attachments/assets/3279b99f-9720-45a2-8cfd-ed049198da10" alt="Product Info Page" width="600" height="800">
+
+---
+
+### 🧾 All Products Showcase
+<img src="https://github.com/user-attachments/assets/1b71efa8-ee39-4a52-a74e-30cef2637b6c" alt="All Products" width="600" height="800">
+
+---
+
+### 🔐 Login Page
+<img src="https://github.com/user-attachments/assets/37d815d3-bf43-4abe-8450-a9b0fa0324f3" alt="Login Page" width="600" height="800">
+
+---
+
+### 🧑‍💻 Register Page
+<img src="https://github.com/user-attachments/assets/3bb55e3b-88df-4e12-91d3-d817becf5868" alt="Register Page" width="600" height="800">
+
+---
+
+### 🏠 Dashboard (After Login)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/19c236af-df25-4dd8-a12d-d106a1619479" alt="Dashboard 1" width="600" height="800">
+  <br><br>
+  <img src="https://github.com/user-attachments/assets/4d5c046f-1ea1-46b8-add5-fe41af90ee54" alt="Dashboard 2" width="600" height="800">
+</p>
+
+---
+
+### 👤 Profile Management Page  
+Update email, username, or delete your account.
+
+<img src="https://github.com/user-attachments/assets/2cd24bcb-0ca4-4eb6-9656-2d866302f5b2" alt="Profile Management" width="600" height="800">
+
+---
+
+### 🚚 Update Shipping Page  
+Lets users update their shipping address.
+
+<img src="https://github.com/user-attachments/assets/39df9b3d-5344-4d93-9d37-354e98dd99b0" alt="Update Shipping" width="600" height="800">
+
+---
+
+### 📧 Email Sent Page (After Registration)
+<img src="https://github.com/user-attachments/assets/9ecf3f80-bb0a-4b9e-ae44-03c2bfac0007" alt="Email Sent Page" width="600" height="800">
+
+---
+
+### ✉️ Email Verification Page  
+The user also receives a success or failure notification after verifying the link.
+
+<img src="https://github.com/user-attachments/assets/ff434ead-2ea6-45b7-9594-73c770bfc52c" alt="Email Verification" width="600" height="800">
+
+---
+
+### 💳 Checkout Page  
+Shipping address auto-fills if already saved.
+
+<img src="https://github.com/user-attachments/assets/63255161-9829-43b1-975a-e4543290ce47" alt="Checkout Page" width="600" height="800">
+
+---
+
+### 🧾 Payment Integration  
+After successful payment, order details are securely stored in the backend.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1a5f09b6-a6aa-4603-8955-3466bc00c75e" alt="Payment 1" width="600" height="800">
+  <br><br>
+  <img src="https://github.com/user-attachments/assets/8d366f78-44ff-41c5-ad1c-33b1a511f895" alt="Payment 2" width="600" height="800">
+  <br><br>
+  <img src="https://github.com/user-attachments/assets/2c9965b0-268f-4475-9454-6cda0b6a8421" alt="Payment 3" width="600" height="800">
+</p>
+
+---
+
+### 🖥️ Backend  
+Displays how order details and user data are managed and stored securely in the backend.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4a73b0e5-4c47-4213-b2a2-98214a623014" alt="Backend View 1" width="600" height="800">
+  <br><br>
+  <img src="https://github.com/user-attachments/assets/9178f9a5-d8cb-47cf-9bc0-d3b4597085f0" alt="Backend View 2" width="600" height="800">
+</p>
 
 <hr>
-<hr>
 
-## 🤝 Contributing
 
-Contributions are always welcome! 🎉  
-If you'd like to improve this project — fix bugs, add new features, or enhance UI — feel free to:
 
-1. Fork the repository  
-2. Create a new feature branch (`git checkout -b feature-name`)  
-3. Commit your changes (`git commit -m 'Add some feature'`)  
-4. Push to your branch (`git push origin feature-name`)  
-5. Open a Pull Request 🚀  
 
-<hr>
 
-## 📄 License
 
-This project is licensed under the **MIT License** — you’re free to use, modify, and distribute it, provided proper credit is given.  
-See the [LICENSE](LICENSE) file for more details.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
