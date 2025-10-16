@@ -176,7 +176,7 @@ Here are some screenshots that showcase the app's UI and key features.
 ---
 
 ### 🧾 All Products Showcase
-<img src="https://github.com/user-attachments/assets/1b71efa8-ee39-4a52-a74e-30cef2637b6c" alt="All Products" width="600" height="800">
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/aacb1635-b0ac-4b40-8edf-bee978da8d2a" />
 
 ---
 
