@@ -1,240 +1,167 @@
 {% load static %}
 
 <!DOCTYPE html>
-
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShopShiv</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Polished Default Button Look */
+        .btn {
+            border-radius: 30px !important;
+            font-weight: 500 !important;
+            padding: 8px 18px !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        /* Elegant primary-style button (Dashboard, Login, Register, Logout) */
+        .btn.btn-alert {
+            background: linear-gradient(145deg, #2c3e50, #34495e) !important;
+            border: none !important;
+            color: #fff !important;
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.4);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .btn.btn-alert:hover {
+            background: linear-gradient(145deg, #22313f, #2c3e50) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(44, 62, 80, 0.45);
+        }
+
+        /* Cart button - outlined but solid looking */
+        .btn-outline-secondary {
+            border: 2px solid #2c3e50 !important;
+            border-radius: 30px;
+            color: #2c3e50 !important;
+            background-color: rgba(255,255,255,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #2c3e50 !important;
+            color: #fff !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(44, 62, 80, 0.4);
+        }
+
+        /* Navbar & text adjustments */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .dropdown-item:hover {
+            background-color: #2c3e50 !important;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
 
 
-    <head>
+<nav class="navbar navbar-expand-lg bg-primary justify-content-center">
+    <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">&nbsp; &nbsp; ShopShiv</a>
 
-        <meta charset="utf-8"/>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-	  <title> ShopShiv </title>
-
-
-
-        <!-- CSS -->
-        
-        <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-        <!-- JavaScript -->
-
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-
-	<!-- JavaScript Popper -->
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-	
-
-	 <!-- Bootstrap Max CDN --> 
-
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-
-    </head>
-
-    
-
-
-    <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
-
-
-        <a class="navbar-brand main-heading text-white" href="{% url 'store' %}"> 
-                
-        &nbsp; &nbsp; ShopShiv 
-        
-        </a>
-
-
-        <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-
     </button>
 
-    
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-                
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-
-                <li class="nav-item dropdown">
-                    
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    
-                        Categories
-                    
-                    </a>
-                    
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'store' %}">All</a></li>
+                    {% for category in all_categories %}
+                    <li><a class="dropdown-item" href="{{category.get_absolute_url}}">{{category.name|capfirst}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-                        <li>
-                            
-                            <a class="dropdown-item" href="{% url 'store' %}"> All </a>
-                        
-                        </li>
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="btn btn-alert navbar-btn text-white" href="{%url 'dashboard'%}">Dashboard</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="btn btn-alert navbar-btn text-white" href="{%url 'register'%}">Register</a>
+            </li>
+            {% endif %}
 
-                        {% for category in all_categories %}
-                        <li>
-                            
-                            <a class="dropdown-item" href="{{category.get_absolute_url}}"> {{category.name|capfirst}} </a>
-                        
-                        </li>
-                        {% endfor %}
-                    
-        
-                    
-                    </ul>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="btn btn-alert navbar-btn text-white" href="{% url 'user-logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="btn btn-alert navbar-btn text-white" href="{% url 'my-login' %}">Login</a>
+            </li>
+            {% endif %}
+            &nbsp; &nbsp; &nbsp;
 
-                </li>
+            <li class="nav-item">
+                <a href="{%url 'cart-summary' %}" class="btn btn-outline-secondary">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    &nbsp;
+                    <div id="cart-qty" class="d-inline-flex">
+                        {% with qty_amount=cart|length %}
+                        {% if qty_amount > 0 %}
+                        {{ qty_amount }}
+                        {% else %}
+                        0
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                </a>
+            </li>
+            &nbsp; &nbsp; &nbsp;
+        </ul>
+    </div>
+</nav>
 
-            </ul>
-
-        </div>
-
-
-        <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-            
-            <ul class="navbar-nav ms-auto">
-                
-                {% if user.is_authenticated %}
-
-
-                    <li class="nav-item">
-                
-                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{%url 'dashboard'%}"> Dashboard </a>
-
-                    </li>
-                    {%else%}
-                    <li class="nav-item">
-                
-                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{%url 'register'%}"> Register </a>
-
-                    </li>
-
-                {% endif %}      
-                     
-                
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-
-                        <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> Logout </a>
-
-                    </li>
-                    {% else %}
-
-                    <li class="nav-item">
-
-                        <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'my-login' %}"> Login </a>
-
-                    </li>
-
-                {% endif %}
-                &nbsp; &nbsp; &nbsp;
-
-
-                <li class="nav-item">
-
-                    <a type="button" role="button" href="{%url 'cart-summary' %}" class="btn btn-outline-secondary"> 
-                    
-
-
-                        <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
-                        &nbsp;
-
-                        <div id="cart-qty" class="d-inline-flex">
-
-                            {% with qty_amount=cart|length %}
-
-                                {% if qty_amount > 0 %}
-
-                                    {{ qty_amount }}
-                                {% else %}
-                                    0
-                                {% endif %}
-
-
-
-
-                            {% endwith %}
-                            
-
-                        </div>
-
-
-
-                    </a>
-
-                </li>
-
-                &nbsp; &nbsp; &nbsp;
-        
-
-            </ul>
-
-        
-        </div>
-
-
-    </nav>
-
-
-    <body>
-
-
-        {% block content %} 
-        
-        
-
-
-
-
-
-            
-        {% endblock %}
-    
-        
-
-
-    </body>
-
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

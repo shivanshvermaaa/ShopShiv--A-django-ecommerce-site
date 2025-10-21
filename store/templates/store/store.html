@@ -10,10 +10,39 @@
 
 
     <!-- Introduction section -->
-    <style>
+<style>
     body {
         background: linear-gradient(to right, #74ebd5, #ACB6E5);
         min-height: 100vh;
+    }
+
+    
+    .card {
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    
+    .card img {
+        width: 100%;
+        height: 220px;           /* adjust based on how tall you want */
+        object-fit: cover;       /* crops instead of stretching */
+        border-bottom: 1px solid #ddd;
+    }
+
+    
+    .card-body {
+        min-height: 100px;       /* prevents smaller cards from shrinking */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+   
+    .card:hover {
+        transform: scale(1.02);
+        transition: all 0.3s ease-in-out;
     }
 </style>
   

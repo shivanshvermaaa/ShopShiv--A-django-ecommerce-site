@@ -1,51 +1,159 @@
 {% include "store/base.html" %}
-
-
 {% load static %}
-
 {% load mathfilters %}
 {% block content %}
 
-  <style>
+<style>
+    body {
+        background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        min-height: 100vh;
+    }
 
+    /* Shopping Cart Heading */
+    .cart-heading {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #2b7fc7, #266ba7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
 
-        body {
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
-            min-height: 100vh;
+    .product-item {
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 15px;
+        margin-bottom: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    /* Product Images */
+    .product-item img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+        margin: auto;
+    }
+
+    /* Product title */
+    .product-title a {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        text-decoration: none;
+    }
+
+    .product-title a:hover {
+        color: #2980b9;
+    }
+
+    /* Borders and sections */
+    .border {
+        border-radius: 12px;
+        margin-top: 10px;
+        background: #f8f9fa;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Select box */
+    select {
+        border-radius: 6px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        font-size: 0.95rem;
+    }
+
+    /* Buttons */
+    .btn-sm {
+        border-radius: 30px;
+        padding: 5px 15px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #2b7fc7, #266ba7);
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #266ba7, #1f5d8d);
+    }
+
+    .btn-danger {
+        border: none;
+        background: #e74c3c;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background: #c0392b;
+    }
+
+    /* Checkout Button */
+    .btn-checkout {
+        border-radius: 30px;
+        padding: 10px 0;
+        font-weight: 600;
+        font-size: 1rem;
+        background: linear-gradient(135deg, #2980b9, #2b7fc7);
+        border: none;
+        color: white;
+        transition: all 0.2s ease;
+    }
+
+    .btn-checkout:hover {
+        background: linear-gradient(135deg, #2b7fc7, #266ba7);
+    }
+
+    #total {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    @media(max-width: 768px) {
+        .product-item {
+            text-align: center;
         }
-  </style>
+        .product-item .row > div {
+            margin-bottom: 10px;
+        }
+        .col-md-9, .col-lg-10 {
+            padding-left: 0;
+        }
+    }
+</style>
 
 <main class="pt-5">
     
     <div class="container">
       
-      <h1 class="h5"> Shopping cart </h1>
+      <h1 class="cart-heading">Your Shopping Cart</h1>
 
-	<hr>
+      <hr>
 
       {%for item in cart%}
-
       {% with product=item.product %}
-
-
-      
-      <br>
-
-      <div class="row mb-4 border product-item">
+      <div class="row product-item align-items-center">
         
         <div class="col-md-3 col-lg-2 order-md-first bg-light">
-        
-            <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{product.image.url}}"> <!-- Product image -->
-        
+            <img class="img-fluid mx-auto d-block" alt="Responsive image" src="{{product.image.url}}"> <!-- Product image -->
         </div>
 
-        
         <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
           
-          <a href="{{product.get_absolute_url}}" class="text-info text-decoration-none"> <!-- Product get absolute url -->
-          
+          <a href="{{product.get_absolute_url}}" class="product-title text-decoration-none"> <!-- Product get absolute url -->
             <h1 class="h5 pt-2"> {{product.title}} </h1>
-          
           </a>
           
           <div class="border">
@@ -54,8 +162,7 @@
               
                 <div class="row p-3">
               
-                <div class="col-6"> Product </div>
-              
+                <div class="col-6"> Price </div>
                 <div class="col-6 text-end"><span class="h6 fw-bold">$ {{product.price|mul:item.qty}}</span></div>
             
               </div>
@@ -64,52 +171,30 @@
             
             <div class="col">
               
-              <div class="row p-3">
+              <div class="row p-3 align-items-center">
                 
-                <div class="col-12">
-                  
+                <div class="col-md-4 col-sm-12">
                   <label for="select">Qty</label>
-
-                  &nbsp; 
-                  
                   <select id="select{{product.id}}">
-                  
-                    <option selected>
-                  
-                        {{item.qty}}
-                  
-                    </option>
-                  
+                    <option selected>{{item.qty}}</option>
                     <option value="">1</option>
-                  
                     <option value="">2</option>
-                  
                     <option value="">3</option>
-                  
                     <option value="">4</option>
-                  
                   </select>
-                  
-                  <br> <br>
-
-                  <button type="button" id="update-button" data-index="{{product.id}}"
-                    class="btn btn-primary btn-sm update-button">
-                    Update
-                  
-                  </button>
-                  
-                  &nbsp;
-
-                  <button type="button" id="delete-button" data-index="{{product.id}}"
-                    class="btn btn-danger btn-sm delete-button">
-                    Delete
-        
-                  </button>
-        
-
                 </div>
-        
-            </div>
+
+                <div class="col-md-8 col-sm-12 text-md-end text-sm-center mt-2 mt-md-0">
+                  <button type="button" id="update-button" data-index="{{product.id}}" class="btn btn-primary btn-sm update-button">
+                    Update
+                  </button>
+                  &nbsp;
+                  <button type="button" id="delete-button" data-index="{{product.id}}" class="btn btn-danger btn-sm delete-button">
+                    Delete
+                  </button>
+                </div>
+
+              </div>
         
             </div>
     
@@ -117,21 +202,15 @@
     
         </div>
       
-    </div>
-
+      </div>
       {% endwith %}
       {% endfor %}
       
-
-
-      <div class="col-12 text-end">
- 
+      <div class="col-12 text-end mt-3 mb-3">
         <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex"> {{cart.get_total}} </div></div>
-        
- 
       </div>
-      <br>
-      <a href="{% url 'checkout' %}" class="btn btn-primary w-100 ">
+
+      <a href="{% url 'checkout' %}" class="btn btn-checkout w-100">
         Proceed To Checkout
       </a>
 
@@ -139,55 +218,34 @@
     <br>
     <br>
 
- </main>
- <script>
+</main>
 
+<script>
   // delete button ajax
     $(document).on('click', '.delete-button', function(e){
-
-        // to stop the default action of the button i.e submitting the form
         e.preventDefault(); 
-        
-        // way to talk to the backend using ajax
-        // here we are sending a post request to the backend
         $.ajax({
            type: 'POST',
             url: '{% url "cart-delete" %}',
             data:{
                 product_id: $(this).data('index'),
                 csrfmiddlewaretoken: '{{ csrf_token }}',
-                // take care of the lowercase 'post' here
                 action: 'post', 
             },
             success: function (json){
                 console .log(json);
-                location.reload(); // to reload the page after deletion
-                // updating the cart quantity in the navbar
-                // getting the element by id and changing its text content to the new quantity
+                location.reload();
                 document.getElementById('cart-qty').textContent= json.qty 
                 document.getElementById('total').textContent= json.total
             },
-            error: function (xhr, errmsg, err){
-                
-            },
-
-
+            error: function (xhr, errmsg, err){}
         });
     });
 
-
-
-
-// update button ajax
+  // update button ajax
  $(document).on('click', '.update-button', function(e){
-
-        // to stop the default action of the button i.e submitting the form
         e.preventDefault(); 
-        
         var theproduct_id = $(this).data('index');
-
-        // way to talk to the backend using ajax
-        // here we are sending a post request to the backend
         $.ajax({
            type: 'POST',
             url: '{% url "cart-update" %}',
@@ -195,30 +253,17 @@
                 product_id: $(this).data('index'),
                 product_quantity: $('#select'+ theproduct_id+' option:selected').text(),
                 csrfmiddlewaretoken: '{{ csrf_token }}',
-                // take care of the lowercase 'post' here
                 action: 'post', 
             },
             success: function (json){
                 console .log(json);
-                location.reload(true); // to reload the page after deletion
-                // updating the cart quantity in the navbar
-                // getting the element by id and changing its text content to the new quantity
+                location.reload(true);
                 document.getElementById('cart-qty').textContent= json.qty 
                 document.getElementById('total').textContent= json.total
             },
-            error: function (xhr, errmsg, err){
-                
-            },
-
-
+            error: function (xhr, errmsg, err){}
         });
     });
-
-
-
- </script>
-
-
+</script>
 
 {% endblock %}
-
