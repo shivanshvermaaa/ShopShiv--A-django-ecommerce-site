@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
+from payment.models import Order
 
 
 # Create your views here.
@@ -151,3 +152,11 @@ def manage_shipping(request):
     context = {'form': form}
     return render(request, 'account/manage-shipping.html', context=context)
     
+@login_required
+def my_orders(request):
+    # Fetch all orders for the logged-in user and order by most recent
+    orders = Order.objects.filter(user=request.user).order_by('-date_ordered')
+    context = {
+        'orders': orders
+    }
+    return render(request, 'account/my-orders.html', context)

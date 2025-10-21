@@ -1,68 +1,124 @@
 {% include "store/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+
 {% block content %}
-    <style>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
+<style>
+    body {
+        background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        min-height: 100vh;
+        font-family: 'Roboto', sans-serif;
+    }
 
-        body {
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
-            min-height: 100vh;
+    .dashboard-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .dashboard-card h5 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #333;
+    }
+
+    .dashboard-card p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-card li {
+        margin-bottom: 0.5rem;
+        color: #444;
+        font-weight: 500;
+    }
+
+    .dashboard-card a.btn {
+        background: linear-gradient(135deg, #4a90e2, #357ab7);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        transition: all 0.2s ease-in-out;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .dashboard-card a.btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+    }
+
+    @media(max-width: 768px) {
+        .dashboard-card h5 {
+            font-size: 1.2rem;
         }
-    </style>
-   
-    <body>
-        <br> <br>
-        <div class="container bg-white shadow-md p-5 form-layout">
-           <h5 class="mb-3">
-                <i class="fa fa-tachometer text-info me-2"></i>
-                    Welcome, {{ user }} to Your Dashboard
-            </h5>
+    }
+</style>
 
-            <hr>
-            <p>This is the dashboard you can do the following.</p>
-            <li> track your orders</li>
-            <li>manage your account</li>
-            <li>manage your shipping address</li>
-            <li>and much more</li>
-            
+<div class="container pt-5">
 
-        </div>
-        <br> <br>
-        <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">
-                <i class="fa fa-shopping-bag text-success me-2"></i> Track Your Orders
-            </h5>
-            <hr>
-            <p>track all of your orders here</p>
-            <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'user-logout' %}"> My Orders </a>
-        
-        </div>
-        <br> <br>
-        <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">
-                <i class="fa fa-user text-primary me-2"></i> Manage Your Account
-            </h5>
-            <hr>
+    <!-- Welcome Card -->
+    <div class="dashboard-card">
+        <h5>
+            <i class="fa fa-tachometer text-info"></i> Welcome, {{ user }} to Your Dashboard
+        </h5>
+        <hr>
+        <p>This is your personal dashboard where you can:</p>
+        <ul>
+            <li>Track your orders</li>
+            <li>Manage your account</li>
+            <li>Update your shipping address</li>
+            <li>And much more!</li>
+        </ul>
+    </div>
 
-            <p>update your profile and delete your account</p>
-            <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'profile-management' %}"> Profile management </a>
-            
-        </div>
-        <br> <br>
-        <div class="container bg-white shadow-md p-5 form-layout">
-            <h5 class="mb-3">
-                <i class="fa fa-truck text-primary me-2"></i> Manage Shipping
-            </h5>
+    <!-- Track Orders Card -->
+    <div class="dashboard-card">
+        <h5>
+            <i class="fa fa-shopping-bag text-success"></i> Track Your Orders
+        </h5>
+        <hr>
+        <p>View and track all of your orders easily.</p>
+        <a class="btn" href="{% url 'my-orders' %}"> My Orders </a>
+    </div>
 
+    <!-- Manage Account Card -->
+    <div class="dashboard-card">
+        <h5>
+            <i class="fa fa-user text-primary"></i> Manage Your Account
+        </h5>
+        <hr>
+        <p>Update your profile or delete your account.</p>
+        <a class="btn" href="{% url 'profile-management' %}"> Profile Management </a>
+    </div>
 
-            <hr>
+    <!-- Manage Shipping Card -->
+    <div class="dashboard-card">
+        <h5>
+            <i class="fa fa-truck text-warning"></i> Manage Shipping
+        </h5>
+        <hr>
+        <p>Update and manage your shipping details quickly.</p>
+        <a class="btn" href="{% url 'manage-shipping' %}"> Manage Shipping </a>
+    </div>
 
-            <p>update your shipping details</p>
-            <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'manage-shipping' %}"> manage shipping </a>
-            
-        </div>
-
-    </body>
-
+</div>
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        min-height: 100vh;
+    }
+    .order-card {
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        transition: transform 0.2s;
+    }
+    .order-card:hover {
+        transform: scale(1.02);
+    }
+    .order-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 10px 10px 0 0;
+    }
+    .order-body {
+        padding: 15px;
+    }
+</style>
+
+<div class="container pt-5">
+
+    <h3 class="mb-4 text-center text-primary">My Orders</h3>
+
+    {% if orders %}
+        {% for order in orders %}
+        <div class="card order-card">
+            <div class="order-header">
+                Order #{{ order.id }} - ${{ order.amount_paid }}
+                <span class="float-end">{{ order.date_ordered|date:"M d, Y H:i" }}</span>
+            </div>
+            <div class="order-body">
+                <p><strong>Shipping Address:</strong> {{ order.shipping_address }}</p>
+                <p><strong>Items:</strong></p>
+                <ul>
+                    {% for item in order.orderitem_set.all %}
+                        <li>{{ item.product.title }} - Qty: {{ item.quantity }} - ${{ item.price|floatformat:2 }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">You haven't placed any orders yet.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

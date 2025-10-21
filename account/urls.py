@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views
+from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns=[
@@ -42,6 +42,8 @@ urlpatterns=[
 
     # shipping address management
     path('manage-shipping/',views.manage_shipping,name='manage-shipping'),
+
+    path('my-orders/', views.my_orders, name='my-orders'),
 
 ]
 
